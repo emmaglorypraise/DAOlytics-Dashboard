@@ -57,7 +57,7 @@ export default function Home() {
     const callGetWalletAddressDetails = async (chainId, address) => {
         axios.get(`${baseURL}/${chainId}/address/${address}/balances_v2/?key=${APIKEY}`)
             .then(data => {
-                setNeededAddress(newAddress)
+                setNeededAddress(data.data.data)
                 // console.log("address:", data.data.data)
 
             })
@@ -84,30 +84,30 @@ export default function Home() {
         axios.get(`${baseURL}/${chainId}/address/${address}/balances_v2/?key=${APIKEY}`)
             .then(data => {
                 setTransactionsETH(data.data.data.items)
-                console.log("ETH", data.data.data.items)
+                // console.log("ETH", data.data.data.items)
+            })
+            .catch(err => console.log(err))
+
+    }
+    // https://api.covalenthq.com/v1/xy=k/supported_dexes/?quote-currency=USD&format=JSON&key=ckey_52a12371af924b40af3f68e681f
+    const callGetTransactionsBSC = async (chainId) => {
+      // axios.get(`${baseURL}/${chainId}/xy=k/supported_dexes/?key=${APIKEY}`)
+        
+       axios.get("https://api.covalenthq.com/v1/xy=k/supported_dexes/?quote-currency=USD&key=ckey_52a12371af924b40af3f68e681f")
+            .then(data => {
+                setSupportedDex(data.data.data.items)
+                console.log("works:", data.data.data.items)
+
             })
             .catch(err => console.log(err))
 
     }
 
-    //https://api.covalenthq.com/v1/1/address/0x197e3eCCD00F07B18205753C638c3E59013A92bf/transfers_v2/?quote-currency=USD&format=JSON&contract-address=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&page-size=10&page-number=1&key=ckey_52a12371af924b40af3f68e681f
-    // const callGetTransactionsBSC = async (chainId, address) => {
-    //     //https://api.covalenthq.com/v1/xy=k/supported_dexes/?quote-currency=USD&format=JSON&key=ckey_52a12371af924b40af3f68e681f
-    //     axios.get(`${baseURL}/${chainId}/address/${address}/xy=k/supported_dexes/?key=${APIKEY}`)
-    //         .then(data => {
-    //             setSupportedDex(data.data.data)
-    //             console.log("works:", data.data.data)
-
-    //         })
-    //         .catch(err => console.log(err))
-
-    // }
-
 
 
     useEffect(() => {
         callGetTransactionsETH(blockchainChainId,demoAddress)
-        // callGetTransactionsBSC(blockchainChainId, newAddress)
+        callGetTransactionsBSC(blockchainChainId)
         callGetWalletAddressDetails(blockchainChainId, newAddress)
         callGetDEX(blockchainChainId, dexname)
     }, []);
@@ -284,36 +284,38 @@ export default function Home() {
                 </Flex>
                 <Flex justifyContent="space-between" mt={8}>
                     <Flex align="flex-end">
-                        <Heading as="h2" size="lg" letterSpacing="tight">DEX Exchange Pools</Heading>
+                        <Heading as="h2" size="lg" letterSpacing="tight">Supported DEX </Heading>
                         <Text fontSize="small" color="gray" ml={4}>July 2022</Text>
                     </Flex>
                     <IconButton icon={<FiCalendar />} />
                 </Flex>
                 <Flex flexDir="column">
                     <Flex overflow="auto">
-                        <Table variant="unstyled" mt={4}>
-                             <Thead>
-                                <Tr color="gray">
-                                    <Th>Dex Name</Th>
-                                    <Th >Token 1</Th>
-                                    <Th >Token 2</Th>
-                                    <Th >Gas Fee</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
+                    <Table variant="unstyled" mt={4}>
+                                <Thead>
+                                                <Tr color="gray">
+                                                    {/* <Th>Chain Id</Th> */}
+                                                    <Th >Chain name</Th>
+                                                    <Th >Dex name</Th>
+                                                    <Th >Swap fee</Th>
+                                                </Tr>
+                                            </Thead>
+                                    <Tbody>
                                     { <>
-                                        
+                                      
                                     </>
                                     }
                                     {display == 'show' &&
                                         <>
-                                        {dex &&
-                                                dex?.map((item) => {
+                                        {supportedDex &&
+                                                supportedDex?.map((item) => {
                                             return (
                                                 <>
                                                 <Tr>
+                                                {/* <Td>{item.chain_id}</Td> */}
+                                                <Td>{item.chain_name}</Td>
                                                 <Td>{item.dex_name}</Td>
-                                                <Td>
+                                                {/* <Td>
                                                     <Flex align="center">
                                                         <Avatar size="sm" mr={2} src={item.token_0.logo_url} />
                                                         <Flex flexDir="column">
@@ -321,8 +323,8 @@ export default function Home() {
                                                             <Text fontSize="sm" color="gray">{item.token_0.contract_ticker_symbol}</Text>
                                                         </Flex>
                                                     </Flex>
-                                                </Td>
-                                                <Td>
+                                                </Td> */}
+                                                {/* <Td>
                                                     <Flex align="center">
                                                         <Avatar size="sm" mr={2} src={item.token_1.logo_url} />
                                                         <Flex flexDir="column">
@@ -330,24 +332,24 @@ export default function Home() {
                                                             <Text fontSize="sm" color="gray">{item.token_1.contract_ticker_symbol}</Text>
                                                         </Flex>
                                                     </Flex>
-                                                </Td>
-                                                <Td>{item.total_liquidity_quote}</Td>
-                                                <Td>{item.total_liquidity_quote}</Td>
+                                                </Td> */}
+                                                <Td>{item.swap_fee}</Td>
                                                 </Tr>
                                     
                                                 </>
 
                                             );
                                             })}
-                                            {dex.length === 0 && (
+                                            {supportedDex.length === 0 && (
                                         <Tr>
                                             <Td isNumeric><Text fontWeight="bold" display="inline-table">No Data Available For Now</Text></Td>
                                         </Tr>
                                     )}
                                         </>
                                     }
-                                        </Tbody>
-                                    </Table>
+                            </Tbody>
+                        </Table>
+                        
                                 </Flex>
                                 <Flex align="center">
                                     <Divider />
@@ -525,7 +527,7 @@ export default function Home() {
                 </Flex> */}
                 <Flex justifyContent="space-between" mt={8}>
                     <Flex align="flex-end">
-                        <Heading as="h2" size="lg" letterSpacing="tight">Supported DEXs</Heading>
+                        <Heading as="h2" size="lg" letterSpacing="tight">Exchange Pools DEXs</Heading>
                         {/* <Text fontSize="sm" color="gray" >View token listed on Uniswap Exchange</Text> */}
                                         
                         {/* <Text fontSize="small" color="gray" ml={4}>Apr 2021</Text> */}
@@ -534,22 +536,26 @@ export default function Home() {
                 </Flex>
                 <Flex flexDir="column">
                     <Flex overflow="auto">
-                        <Table variant="unstyled" mt={4}>
+                    <Table variant="unstyled" mt={4}>
+                             <Thead>
+                                <Tr color="gray">
+                                    <Th >Token 1</Th>
+                                    <Th >Token 2</Th>
+                                    <Th >Gas Fee</Th>
+                                </Tr>
+                            </Thead>
                             <Tbody>
                                     { <>
                                         
                                     </>
                                     }
-                                    {/* {display == 'show' &&
+                                    {display == 'show' &&
                                         <>
-                                        {supportedDex &&
-                                                supportedDex?.map((item) => {
+                                        {dex &&
+                                                dex?.map((item) => {
                                             return (
                                                 <>
                                                 <Tr>
-                                                <Td>{item.chain_id}</Td>
-                                                <Td>{item.chain_name}</Td>
-                                                <Td>{item.dex_name}</Td>
                                                 <Td>
                                                     <Flex align="center">
                                                         <Avatar size="sm" mr={2} src={item.token_0.logo_url} />
@@ -568,22 +574,24 @@ export default function Home() {
                                                         </Flex>
                                                     </Flex>
                                                 </Td>
-                                                <Td>{item.swap_fee}</Td>
+                                                <Td>{item.total_liquidity_quote}</Td>
+                                                <Td>{item.total_liquidity_quote}</Td>
                                                 </Tr>
                                     
                                                 </>
 
                                             );
                                             })}
-                                            {supportedDex.length === 0 && (
+                                            {dex.length === 0 && (
                                         <Tr>
                                             <Td isNumeric><Text fontWeight="bold" display="inline-table">No Data Available For Now</Text></Td>
                                         </Tr>
                                     )}
                                         </>
-                                    } */}
-                            </Tbody>
-                        </Table>
+                                    }
+                                        </Tbody>
+                                    </Table>
+                        
                     </Flex>
                     <Flex align="center">
                         <Divider />
