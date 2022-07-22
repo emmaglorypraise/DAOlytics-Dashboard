@@ -1,6 +1,8 @@
-# Dashboard UI
+# DAO Analytics Dahboard with Covalent API
 
 <!-- Built using:
+
+Nextjs, Chakra UI, Covalent API
 
 | Name | Version | Docs/GitHub/Website |
 | ----------- | ----------- | ----------- |
