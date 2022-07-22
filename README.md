@@ -12,7 +12,7 @@ Built using:
 | Covalent API | - | [https://www.covalenthq.com/](https://www.covalenthq.com/) |
 
 
-The design: https://dribbble.com/shots/15640240-The-Rise-dashboard-activity
+Design duplicated from: https://dribbble.com/shots/15640240-The-Rise-dashboard-activity
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
