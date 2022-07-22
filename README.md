@@ -2,8 +2,6 @@
 
 Built using:
 
-Nextjs, Chakra UI, 
-
 | Name | Version | Docs/GitHub/Website |
 | ----------- | ----------- | ----------- |
 | Chakra UI | 1.6.2 | https://chakra-ui.com/ |
