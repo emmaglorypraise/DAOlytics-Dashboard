@@ -1,8 +1,8 @@
 # DAO Analytics Dahboard with Covalent API
 
-<!-- Built using:
+Built using:
 
-Nextjs, Chakra UI, Covalent API
+Nextjs, Chakra UI, 
 
 | Name | Version | Docs/GitHub/Website |
 | ----------- | ----------- | ----------- |
@@ -11,10 +11,11 @@ Nextjs, Chakra UI, Covalent API
 | React  Icons (Feather) | 4.28.0 | https://react-icons.github.io/react-icons/icons?name=fi |
 | Next.js | 3.0.3 | https://nextjs.org/docs/getting-started |
 | React Chart 2 | - | http://reactchartjs.github.io/react-chartjs-2/#/ |
+| Covalent API | - | [https://www.covalenthq.com/](https://www.covalenthq.com/) |
+
 
 The design: https://dribbble.com/shots/15640240-The-Rise-dashboard-activity
 
---- -->
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
