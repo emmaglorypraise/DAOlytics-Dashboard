@@ -1,6 +1,61 @@
 # DAO Analytics Dahboard with Covalent API
 
-Built using:
+> ## Overview
+<p align="justify">
+You were tasked by the innovative covalent team 
+</p>
+
+<p align="justify">
+They would like to  create a basic open source, multi-chain
+compatible, DAO Analytics Dashboard
+Template, powered by the Covalent API.
+This template may then be used by any
+DAO on any Covalent supported
+blockchains to visualize key analytics
+around value flows, membership,
+proposals, participation and sentiment.
+Data presented can include both onchain and off-chain information.
+</p>
+
+> ## Project Features
+
+- users should see metrics of other Dao 
+
+- see balances of token holders of the Dao
+
+- see the top token holders of the Dao
+
+
+> ## What we delivered
+
+- We built a Dashboard that shows
+  metrices of owners and their token
+  balance with adresses.
+  
+- we also were able to display DEX
+  exchange pools
+  
+- we also were able to display DEX
+  exchange pools
+  
+  
+  
+  > ## We wanted to and  plan to implement more features as this is our first time
+       consuming the covalent Api and it was quite amazing.
+
+
+  > ## To do features
+  
+   # More metrices
+   
+    - A metrics to show top token holders of a Dao
+    
+    - Metrics to show last 10 transanction of a Dao  
+    
+    - sentiment analysis of a Dao
+   
+#
+> ## Technologies
 
 | Name | Version | Docs/GitHub/Website |
 | ----------- | ----------- | ----------- |
@@ -10,9 +65,6 @@ Built using:
 | Next.js | 3.0.3 | https://nextjs.org/docs/getting-started |
 | React Chart 2 | - | http://reactchartjs.github.io/react-chartjs-2/#/ |
 | Covalent API | - | [https://www.covalenthq.com/](https://www.covalenthq.com/) |
-
-
-Design duplicated from: https://dribbble.com/shots/15640240-The-Rise-dashboard-activity
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
