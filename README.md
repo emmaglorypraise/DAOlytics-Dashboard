@@ -66,6 +66,19 @@ Data presented can include both onchain and off-chain information.
 | React Chart 2 | - | http://reactchartjs.github.io/react-chartjs-2/#/ |
 | Covalent API | - | [https://www.covalenthq.com/](https://www.covalenthq.com/) |
 
+> ## Team Daolytics wallet address
+
+- 0x080d8daD1e42e6c8b7F3bCFc8E205be17dEF001c
+
+#  
+> ## Live Link
+  
+  - https://dao-lytics-dashboard.vercel.app/
+#
+
+> ## Contributors
+
+This Project was created with love by the members of TeamDaolytics in the likes of  iemmaenebeli@gmail.com,emmaglorypraise@gmail.com, oseiweifebhor@gmail.com, vicentiapius@gmail.com
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
